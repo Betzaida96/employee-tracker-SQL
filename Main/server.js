@@ -9,8 +9,8 @@ app.use(express.json());
 
 const pool = new Pool(
 {
-    user: 'postgress',
-    password: 'password',
+    user: 'postgres',
+    password: 'Bubbles11!',
     host: 'localhost',
     database: 'TBD'
 },
