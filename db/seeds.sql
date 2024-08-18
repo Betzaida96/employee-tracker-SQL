@@ -1,3 +1,4 @@
+--  seeds for department
  INSERT INTO department (department_name)
  VALUES ('Human Resources'),
         ('Engineering'),
@@ -5,6 +6,7 @@
         ('Sales'),
         ('Finance');
 
+-- seeds for role
 INSERT INTO role (title, salary, department_id)
 VALUES ('HR Manager', 60000.00, 1),
        ('Software Engineer', 90000.00, 2),
@@ -14,6 +16,7 @@ VALUES ('HR Manager', 60000.00, 1),
        ('Senior Software Engineer', 110000.00, 2),
        ('Sales Manager', 80000.00, 4);
 
+-- seeds for employee
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ('Alice', 'Johnson', 1, NULL),
        ('Bob', 'Smith', 2, NULL),

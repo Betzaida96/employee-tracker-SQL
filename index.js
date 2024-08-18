@@ -1,6 +1,8 @@
-const { prompt, default: inquirer } = require('inquirer');
-const db = require('./db');
+const inquirer = require('inquirer');
+const pool = require('./db/connection');
+const { viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment, addRole, addEmployee, updateEmployeeRole } = require('./db');
 
+// begin pompt in terminal this will show a list of questions asked
 const questions = () => {
 inquirer
 .prompt([
@@ -10,7 +12,8 @@ inquirer
         message: 'What would you like to do?',
         choices: ["View all departments", "View all roles", "View all employees", "Add a department", "Add a role", "Add an employee", "Update an employee role", "Exit"]
     }
-]).then((response) => {
+    // This is where it will call the functions when you select a response. Functions are in db index.js
+]).then((response) => { 
     switch(response.choice) {
         case "View all departments":
             viewAllDepartments();
@@ -33,8 +36,9 @@ inquirer
         case "Update an employee role":
             updateEmployeeRole();
             break;
-        case "Exit":
-            db.end();
+        case "Exit": //if you select exit you will stop being asked questions
+            console.log('Goodbye!');
+            pool.end();
             break;
         default:
             console.log(`Invalid choice: ${answer.choice}`);
@@ -43,3 +47,5 @@ inquirer
 };
 
 questions();
+
+module.exports = {questions}
